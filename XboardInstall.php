@@ -231,7 +231,7 @@ class XboardInstall extends Command
 
     private function configureSqlite(): ?array
     {
-        $sqliteFile = '.docker/.data/database.sqlite';
+        $sqliteFile = 'sqlite-data/database.sqlite';
 
         if (!file_exists(base_path($sqliteFile))) {
             if (!touch(base_path($sqliteFile))) {
