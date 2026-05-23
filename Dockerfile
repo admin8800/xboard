@@ -35,6 +35,7 @@ RUN CFLAGS="-O0" install-php-extensions pcntl \
         supervisor \
         mysql-client \
         shadow \
+        sqlite \
     && addgroup -S -g 1000 www \
     && adduser -S -G www -u 1000 www
 
@@ -50,8 +51,9 @@ RUN mkdir -p \
     /www/storage/app \
     /www/storage/logs \
     /www/bootstrap/cache \
+    /www/sqlite-data \
     && chown -R www:www /www \
-    && chmod -R 775 /www/storage /www/bootstrap/cache
+    && chmod -R 775 /www/storage /www/bootstrap/cache /www/sqlite-data
 
 COPY nginx.conf /etc/nginx/http.d/default.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
