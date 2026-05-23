@@ -25,6 +25,8 @@ RUN git submodule update --init --recursive --force \
 
 FROM phpswoole/swoole:php8.2-alpine
 
+ENV TZ=Asia/Shanghai
+
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 RUN CFLAGS="-O0" install-php-extensions pcntl \
@@ -36,6 +38,9 @@ RUN CFLAGS="-O0" install-php-extensions pcntl \
         mysql-client \
         shadow \
         sqlite \
+        tzdata \
+    && ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo Asia/Shanghai > /etc/timezone \
     && addgroup -S -g 1000 www \
     && adduser -S -G www -u 1000 www
 
