@@ -58,3 +58,17 @@ docker cp xboard:/www/.env ./.env
 ```
 - ./.env:/www/.env
 ```
+
+---
+
+### 节点端
+```
+docker run -d \
+  --restart=always \
+  --name xb-node \
+  --network=host \
+  -e apiHost="https://example.com" \
+  -e apiKey="xxxxxxxxxxxxxxxx" \
+  -e nodeID="1" \
+  ghcr.io/cedar2025/xboard-node
+```
