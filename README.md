@@ -47,7 +47,7 @@ docker exec -it xboard php artisan xboard:install
 ```
 docker restart xboard
 ```
-- 持久化配置
+- 将持久化配置复制出来
 ```
 docker cp xboard:/www/.env ./.env
 ```
@@ -55,3 +55,6 @@ docker cp xboard:/www/.env ./.env
 ---
 
 迁移需要在新机器里将`.env`映射进去
+```
+- ./.env:/www/.env
+```
